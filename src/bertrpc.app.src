@@ -1,0 +1,30 @@
+{application, bertrpc,
+  [
+  {description, "BERT-RPC client"},
+  {vsn, "0.1"},
+  {registered, []},
+  {applications, [
+    kernel,
+    stdlib,
+    crypto
+      ]},
+  {mod, { bertrpc_app, []}},
+  {env, [
+    {pools, [
+      {ext, [
+        {size, 10},
+        {max_overflow, 20}
+        ], [
+        {hostname, {127,0,0,1}},
+        {port, 8000}
+        ]},
+      {messages_controller, [
+        {size, 5},
+        {max_overflow, 10}
+        ], [
+        {hostname, {127,0,0,1}},
+        {port, 9999}
+        ]}
+      ]}
+    ]}
+  ]}.
